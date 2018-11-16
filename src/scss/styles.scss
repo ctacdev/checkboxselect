@@ -5,7 +5,6 @@
 fieldset {
   padding: 0;
   border: none;
-
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -18,7 +17,6 @@ fieldset {
   overflow: auto;
   margin-top: .5rem;
   padding: .5rem .5rem .5rem 1rem;
-
   border: 1px solid #ddd;
   border-top-right-radius: 3px;
   border-top-left-radius: 3px;
@@ -28,11 +26,9 @@ fieldset {
   legend {
     float: left;
     padding: 0;
-
     font-weight: normal;
     color: black;
   }
-
 }
 
 fieldset:first-of-type .checkboxes-container {
@@ -42,10 +38,9 @@ fieldset:first-of-type .checkboxes-container {
 .checkboxes-container {
   box-sizing: border-box;
   display: none;
-  min-height: 5.6rem;
-  max-height: 14.0rem;
+  min-height: 3.0rem;
+  max-height: 9.0rem;
   overflow-y: scroll;
-
   border: 1px solid #ddd;
   border-top: none;
 }
@@ -56,11 +51,9 @@ fieldset:first-of-type .checkboxes-container {
 
 .checkbox-container {
   padding: 0;
-
-  line-height: 2.8rem;
+  line-height: 1.8rem;
 
   input {
-    height: 1.8rem;
     margin-right: 0;
     margin-bottom: 0.3rem;
   }
@@ -68,19 +61,28 @@ fieldset:first-of-type .checkboxes-container {
   label {
     margin: 0 0 0 1.5rem;
   }
-
 }
 
 .empty-filters-text {padding: 1rem;}
 
 .arrow-left {
-  margin-left: 15px;
-  margin-top: 1px;
+  margin-left: 1.5rem;
+  margin-top: .1rem;
   float: right;
   width: 0;
   height: 0;
-  border-top: 8px solid transparent;
-  border-bottom: 8px solid transparent;
+  border-top: .5rem solid transparent;
+  border-bottom: .5rem solid transparent;
+  border-right: .5rem solid black;
+}
 
-  border-right: 8px solid black;
+.arrow-down {
+  margin-left: 1.5rem;
+  margin-top: .1rem;
+  float: right;
+  width: 0;
+  height: 0;
+  border-left: .5rem solid transparent;
+  border-right: .5rem solid transparent;
+  border-top: .5rem solid black;
 }

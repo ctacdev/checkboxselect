@@ -36,7 +36,7 @@ export class CheckboxSelect {
   getFieldSet() {
     return `<fieldset>
               <div class="legend-container">
-                <legend tabindex="0">${this.legend}<div class="arrow-left"></div></legend>
+                <legend tabindex="0">${this.legend}<div class="arrow-down"></div></legend>
               </div>
               ${this.getCheckboxes()}
             </fieldset>`;
