@@ -1,6 +1,10 @@
 export class CheckboxSelect {
 
   constructor(options) {
+
+    this.downArrow = '▼';
+    this.leftArrow = '◀';
+
     Object.assign(this, options);
   }
 
@@ -36,10 +40,37 @@ export class CheckboxSelect {
   getFieldSet() {
     return `<fieldset>
               <div class="legend-container">
-                <legend tabindex="0">${this.legend}<div class="arrow-down"></div></legend>
+                <legend tabindex="0">${this.legend}<div class="arrow-down">${this.downArrow}</div></legend>
               </div>
               ${this.getCheckboxes()}
             </fieldset>`;
+  }
+
+  toggleMultiselectExpand(e, checkboxSelect) {
+
+    if (e.type === 'keydown' && e.code !== 'Space') return;
+
+    const legend = document.getElementsByClassName('legend-container')[0];
+    const checkboxes = document.getElementsByClassName('checkboxes-container')[0];
+    let arrow = legend.getElementsByClassName('arrow-down')[0];
+
+    if (arrow) {
+
+      arrow.classList.remove('arrow-down');
+      arrow.classList.add('arrow-left');
+      arrow.innerHTML = checkboxSelect.leftArrow;
+      checkboxes.style.display = 'none';
+
+    } else {
+
+      arrow = legend.getElementsByClassName('arrow-left')[0];
+      arrow.classList.remove('arrow-left');
+      arrow.classList.add('arrow-down');
+      arrow.innerHTML = checkboxSelect.downArrow;
+      checkboxes.style.display = 'block';
+    }
+
+    e.preventDefault();
   }
 
   init(items = [], selectedOptions = []) {
@@ -47,26 +78,9 @@ export class CheckboxSelect {
     this.items = items;
     this.selectedOptions = selectedOptions || [];
     this.targetDiv.innerHTML = this.getFieldSet();
+
+    const legendContainer = document.getElementsByClassName('legend-container')[0];
+    legendContainer.addEventListener('keydown', e => this.toggleMultiselectExpand(e, this));
+    legendContainer.addEventListener('click', e => this.toggleMultiselectExpand(e, this));
   }
 }
-
-// <fieldset>
-//   <div class="multiselect-control-legend">
-//     <legend tabindex="0"><%= legend %></legend><i class="fas fa-caret-down"></i>
-//   </div>
-//   <div class="multiselect-control-checkboxes" style="display: block;">
-//     <% if items.blank? %>
-//       <div class="empty-filters-text">No <%= simple_pluralize(0, legend).downcase %> found for this search.</div>
-//     <% else %>
-//       <% items.each do |item| %>
-//         <div class="multiselect-control-checkbox">
-//           <label>
-//             <% checked = params[param].try(:include?, item.id.to_s) %>
-//             <input type="checkbox" name="<%= param.to_s %>[]" value="<%= item.id %>" id="<%= param.to_s %>_<%= item.id %>" <%= 'checked' if checked %>>
-//             <%= item.name %>
-//           </label>
-//         </div>
-//       <% end %>
-//     <% end %>
-//   </div>
-// </fieldset>

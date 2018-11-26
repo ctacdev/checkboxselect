@@ -15,19 +15,19 @@ fieldset {
 
 .legend-container {
   overflow: auto;
-  margin-top: .5rem;
   padding: .5rem .5rem .5rem 1rem;
   border: 1px solid #ddd;
   border-top-right-radius: 3px;
   border-top-left-radius: 3px;
 
-  background-color: lightgrey;
+  background-color: lightgray;
 
   legend {
     float: left;
     padding: 0;
     font-weight: normal;
     color: black;
+    line-height: 1rem;
   }
 }
 
@@ -51,7 +51,7 @@ fieldset:first-of-type .checkboxes-container {
 
 .checkbox-container {
   padding: 0;
-  line-height: 1.8rem;
+  line-height: 1.85rem;
 
   input {
     margin-right: 0;
@@ -65,24 +65,19 @@ fieldset:first-of-type .checkboxes-container {
 
 .empty-filters-text {padding: 1rem;}
 
-.arrow-left {
+.arrow-left, .arrow-down {
   margin-left: 1.5rem;
-  margin-top: .1rem;
   float: right;
-  width: 0;
-  height: 0;
-  border-top: .5rem solid transparent;
-  border-bottom: .5rem solid transparent;
-  border-right: .5rem solid black;
+  color: #757575;
+  font-size: .75rem;
 }
 
-.arrow-down {
-  margin-left: 1.5rem;
-  margin-top: .1rem;
-  float: right;
-  width: 0;
-  height: 0;
-  border-left: .5rem solid transparent;
-  border-right: .5rem solid transparent;
-  border-top: .5rem solid black;
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
 }
