@@ -49,8 +49,6 @@ export class CheckboxSelect {
       arrow.innerHTML = checkboxSelect.downArrow;
       checkboxes.style.display = 'block';
     }
-
-    e.preventDefault();
   }
 
   init(items = [], selectedOptions = []) {
@@ -66,5 +64,17 @@ export class CheckboxSelect {
     const legendContainer = document.getElementsByClassName('legend-container')[0];
     legendContainer.addEventListener('keydown', e => this.toggleMultiselectExpand(e, this));
     legendContainer.addEventListener('click', e => this.toggleMultiselectExpand(e, this));
+
+    Array.from(document.getElementsByClassName('checkbox-container')).forEach(container => {
+
+      container.addEventListener('click', e => {
+
+        if (e.target.nodeName != 'input') {
+
+          const input = container.getElementsByTagName('input')[0];
+          input.checked = !input.checked;
+        }
+      });
+    });
   }
 }
