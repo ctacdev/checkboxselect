@@ -18,7 +18,7 @@ export class CheckboxSelect {
     return this.items.map(item => {
 
       return this.checkboxTemplate({
-        fieldName: item.fieldName,
+        fieldName: this.fieldName,
         value: item.value,
         name: item.name,
         checked: this.selectedOptions.includes(item.value) ? 'checked' : ''
