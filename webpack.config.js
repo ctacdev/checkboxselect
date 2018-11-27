@@ -26,6 +26,10 @@ module.exports = {
           'postcss-loader',
           'sass-loader'
         ]
+      },
+      {
+        test: /\.handlebars$/,
+        loader: 'handlebars-loader'
       }
     ]
   },

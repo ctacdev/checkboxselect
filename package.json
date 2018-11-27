@@ -11,6 +11,9 @@
     "babel-loader": "^8.0.4",
     "css-loader": "^1.0.1",
     "cssnano": "^4.1.7",
+    "handlebars": "^4.0.12",
+    "handlebars-form-helpers": "^0.1.3",
+    "handlebars-loader": "^1.7.0",
     "html-webpack-plugin": "^3.2.0",
     "node-sass": "^4.10.0",
     "postcss-loader": "^3.0.0",
@@ -26,5 +29,6 @@
     "start": "webpack-dev-server --open"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {}
 }

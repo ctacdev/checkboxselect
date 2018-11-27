@@ -5,45 +5,25 @@ export class CheckboxSelect {
     this.downArrow = '▼';
     this.leftArrow = '◀';
 
-    Object.assign(this, options);
-  }
+    this.fieldsetTemplate = require("../html/fieldset.handlebars");
+    this.checkboxTemplate = require("../html/checkbox.handlebars");
 
-  getCheckbox(item) {
-    return `<div class="checkbox-container">
-              <label>
-                <input type="checkbox"
-                  name="${item.name}[]"
-                  value="${item.value}"
-                  id="${item.name}_${item.value}"
-                  ${this.selectedOptions.includes(item.value) ? 'checked' : ''}
-                %>
-                ${item.name}
-              </label>
-            </div>`;
+    Object.assign(this, options);
   }
 
   getCheckboxes() {
 
-    if (!this.items || this.items.length == 0) {
+    if (!this.items || this.items.length == 0) return '<div class="empty-filters-text">No items found.</div>';
 
-      return `<div class="checkboxes-container">
-                <div class="empty-filters-text">No items found.</div>
-              </div>`;
-    } else {
+    return this.items.map(item => {
 
-      let html = '<div class="checkboxes-container">';
-      this.items.forEach(item => html = html.concat(this.getCheckbox(item)));
-      return html + '</div>';
-    }
-  }
-
-  getFieldSet() {
-    return `<fieldset>
-              <div class="legend-container">
-                <legend tabindex="0">${this.legend}<div class="arrow-down">${this.downArrow}</div></legend>
-              </div>
-              ${this.getCheckboxes()}
-            </fieldset>`;
+      return this.checkboxTemplate({
+        fieldName: item.fieldName,
+        value: item.value,
+        name: item.name,
+        checked: this.selectedOptions.includes(item.value) ? 'checked' : ''
+      });
+    }).join('\n');
   }
 
   toggleMultiselectExpand(e, checkboxSelect) {
@@ -77,7 +57,11 @@ export class CheckboxSelect {
 
     this.items = items;
     this.selectedOptions = selectedOptions || [];
-    this.targetDiv.innerHTML = this.getFieldSet();
+    this.targetDiv.innerHTML = this.fieldsetTemplate({
+      legend: this.legend,
+      downArrow: this.downArrow,
+      checkboxes: this.getCheckboxes()
+    });
 
     const legendContainer = document.getElementsByClassName('legend-container')[0];
     legendContainer.addEventListener('keydown', e => this.toggleMultiselectExpand(e, this));
