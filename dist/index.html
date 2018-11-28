@@ -6,8 +6,32 @@
     <title>Checkbox Select Demo</title>
   </head>
   <body>
-    <div>
+    <div id="checkbox-select-container"></div>
+    <script>
 
-    </div>
-  <script type="text/javascript" src="index.js"></script></body>
+      document.addEventListener('DOMContentLoaded', () => {
+
+        const container = document.getElementById('checkbox-select-container');
+
+        new CheckboxSelect({
+          targetDiv: container,
+          legend: 'ANIMALS',
+          fieldName: 'animals[]',
+          onItemSelected: (item) => { console.log(item) },
+          onItemDeselected: (item) => { console.log(item) },
+        }).init([
+          { name: 'ant', value: 1 },
+          { name: 'baboon', value: 2 },
+          { name: 'crow', value: 3 },
+          { name: 'deer', value: 4 },
+          { name: 'eagle', value: 5 },
+          { name: 'fox', value: 6 },
+          { name: 'goose', value: 7 },
+          { name: 'hare', value: 8 },
+          { name: 'iguana', value: 9 },
+          { name: 'jaguar', value: 10 }
+        ], [1,3,9]);
+      });
+    </script>
+  <script type="text/javascript" src="checkboxselect.js"></script></body>
 </html>

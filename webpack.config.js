@@ -10,7 +10,7 @@ module.exports = {
     libraryTarget: 'umd',
     libraryExport: 'default',
     path: path.resolve(__dirname, 'dist'),
-    filename: 'index.js'
+    filename: 'checkboxselect.js'
   },
   module: {
     rules: [{

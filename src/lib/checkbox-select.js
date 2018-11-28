@@ -1,6 +1,6 @@
 export class CheckboxSelect {
 
-  constructor(options) {
+  constructor(options = {}) {
 
     if (!options.onItemSelected) options.onItemSelected = () => {};
     if (!options.onItemDeselected) options.onItemDeselected = () => {};
