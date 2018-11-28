@@ -23,7 +23,7 @@ export class CheckboxSelect {
         fieldName: this.fieldName,
         value: item.value,
         name: item.name,
-        checked: this.selectedOptions.includes(item.value) ? 'checked' : ''
+        checked: this.selectedItems.includes(item.value) ? 'checked' : ''
       });
     }).join('\n');
   }
@@ -59,10 +59,10 @@ export class CheckboxSelect {
     else this.onItemDeselected(checkboxSelect.items.find(item => item.value == input.value));
   }
 
-  init(items = [], selectedOptions = []) {
+  init(items = [], selectedItems = []) {
 
     this.items = items;
-    this.selectedOptions = selectedOptions || [];
+    this.selectedItems = selectedItems || [];
     this.targetDiv.innerHTML = this.fieldsetTemplate({
       legend: this.legend,
       downArrow: this.downArrow,
