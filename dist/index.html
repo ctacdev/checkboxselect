@@ -6,15 +6,12 @@
     <title>Checkbox Select Demo</title>
   </head>
   <body>
-    <div id="checkbox-select-container"></div>
+    <div class="checkbox-select-container"></div>
     <script>
 
       document.addEventListener('DOMContentLoaded', () => {
 
-        const container = document.getElementById('checkbox-select-container');
-
         new CheckboxSelect({
-          targetDiv: container,
           legend: 'ANIMALS',
           fieldName: 'animals[]',
           onItemSelected: (item) => { console.log(item) },
