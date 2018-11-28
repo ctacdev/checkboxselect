@@ -17,7 +17,9 @@
         new CheckboxSelect({
           targetDiv: container,
           legend: 'ANIMALS',
-          fieldName: 'animals[]'
+          fieldName: 'animals[]',
+          onItemSelected: (item) => { console.log(item) },
+          onItemDeselected: (item) => { console.log(item) },
         }).init([
           {name: 'ant', value: 1},
           {name: 'baboon', value: 2},

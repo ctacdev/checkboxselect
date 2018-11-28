@@ -2,9 +2,11 @@ export class CheckboxSelect {
 
   constructor(options) {
 
+    if (!options.onItemSelected) options.onItemSelected = () => {};
+    if (!options.onItemDeselected) options.onItemDeselected = () => {};
+
     this.downArrow = '▼';
     this.leftArrow = '◀';
-
     this.fieldsetTemplate = require("../html/fieldset.handlebars");
     this.checkboxTemplate = require("../html/checkbox.handlebars");
 
@@ -13,7 +15,7 @@ export class CheckboxSelect {
 
   getCheckboxes() {
 
-    if (!this.items || this.items.length == 0) return '<div class="empty-filters-text">No items found.</div>';
+    if (!this.items || this.items.length == 0) return '<div class="empty-filters-text">No items found</div>';
 
     return this.items.map(item => {
 
@@ -51,6 +53,12 @@ export class CheckboxSelect {
     }
   }
 
+  onCheckboxChanged(input, checkboxSelect) {
+
+    if (input.checked) this.onItemSelected(checkboxSelect.items.find(item => item.value == input.value));
+    else this.onItemDeselected(checkboxSelect.items.find(item => item.value == input.value));
+  }
+
   init(items = [], selectedOptions = []) {
 
     this.items = items;
@@ -67,12 +75,15 @@ export class CheckboxSelect {
 
     Array.from(document.getElementsByClassName('checkbox-container')).forEach(container => {
 
+      const input = container.getElementsByTagName('input')[0];
+      input.addEventListener('change', () => this.onCheckboxChanged(input, this));
+
       container.addEventListener('click', e => {
 
-        if (e.target.nodeName != 'input') {
+        if (e.target.nodeName == 'DIV') {
 
-          const input = container.getElementsByTagName('input')[0];
           input.checked = !input.checked;
+          this.onCheckboxChanged(input, this);
         }
       });
     });
