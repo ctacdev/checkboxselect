@@ -25,7 +25,7 @@
       padding: 0;
       font-weight: normal;
       color: black;
-      line-height: 1.2rem;
+      line-height: 100%;
       width: 100%;
     }
   }
@@ -67,10 +67,9 @@
   .arrow-left, .arrow-down {
     float: right;
     color: #757575;
-    font-size: .75rem;
 
     &:before {
-      width: 90%;
+      user-select: none;
     }
   }
 
