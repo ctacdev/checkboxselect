@@ -5,13 +5,18 @@ export class CheckboxSelect {
     if (!options.onItemSelected) options.onItemSelected = () => {};
     if (!options.onItemDeselected) options.onItemDeselected = () => {};
 
-    this.targetDiv = document.getElementsByClassName('checkbox-select-container')[0];
     this.downArrow = '▼';
     this.leftArrow = '◀';
     this.fieldsetTemplate = require("../html/fieldset.handlebars");
     this.checkboxTemplate = require("../html/checkbox.handlebars");
 
     Object.assign(this, options);
+
+    if (this.targetContainerId) {
+      this.targetDiv = document.getElementById(this.targetContainerId);
+    } else {
+      this.targetDiv = document.getElementsByClassName('checkbox-select-container')[0];
+    }
   }
 
   getCheckboxes() {

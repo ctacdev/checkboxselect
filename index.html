@@ -12,6 +12,7 @@
       document.addEventListener('DOMContentLoaded', () => {
 
         new CheckboxSelect({
+          targetContainerId: 'checkbox-select-container',
           legend: 'ANIMALS',
           fieldName: 'animals[]',
           onItemSelected: (item) => { console.log(item) },
