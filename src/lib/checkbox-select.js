@@ -8,6 +8,8 @@ export class CheckboxSelect {
     if (!options.downArrow) options.downArrow = '▼';
     if (!options.leftArrow) options.leftArrow = '◀';
 
+    if (!options.noItemsText) options.noItemsText = 'No items found';
+
     this.fieldsetTemplate = require("../html/fieldset.handlebars");
     this.checkboxTemplate = require("../html/checkbox.handlebars");
 
@@ -22,7 +24,7 @@ export class CheckboxSelect {
 
   getCheckboxes() {
 
-    if (!this.items || this.items.length == 0) return '<div class="empty-filters-text">No items found</div>';
+    if (!this.items || this.items.length == 0) return `<div class="empty-filters-text">${this.noItemsText}</div>`;
 
     return this.items.map(item => {
 

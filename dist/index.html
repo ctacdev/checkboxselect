@@ -8,6 +8,7 @@
   <body>
     <div id="animals-container" class="checkbox-select-container" style="width: 170px;"></div>
     <div id="foods-container" class="checkbox-select-container" style="width: 170px;"></div>
+    <div id="empty-container" class="checkbox-select-container" style="width: 170px;"></div>
     <script>
 
       document.addEventListener('DOMContentLoaded', () => {
@@ -20,6 +21,7 @@
           onItemDeselected: (item) => { console.log(item) },
           leftArrow: '◀', // <i class="fas fa-caret-left"></i>
           downArrow: '▼', // <i class="fas fa-caret-down"></i>
+          noItemsText: 'no animals found'
         }).init([
           { name: 'ant', value: 1 },
           { name: 'baboon', value: 2 },
@@ -40,7 +42,8 @@
           onItemSelected: (item) => { console.log(item) },
           onItemDeselected: (item) => { console.log(item) },
           leftArrow: '◀', // <i class="fas fa-caret-left"></i>
-          downArrow: '▼', // <i class="fas fa-caret-down"></i>
+          downArrow: '▼', // <i class="fas fa-caret-down"></i>,
+          noItemsText: 'no foods found'
         }).init([
           { name: 'asparagus', value: 1 },
           { name: 'brocolli', value: 2 },
@@ -53,6 +56,17 @@
           { name: 'ice cream', value: 9 },
           { name: 'jalapeno', value: 10 }
         ], [2, 5, 7]);
+
+        new CheckboxSelect({
+          targetContainerId: 'empty-container',
+          legend: 'EMPTY',
+          fieldName: 'empty[]',
+          onItemSelected: (item) => { console.log(item) },
+          onItemDeselected: (item) => { console.log(item) },
+          leftArrow: '◀', // <i class="fas fa-caret-left"></i>
+          downArrow: '▼', // <i class="fas fa-caret-down"></i>,
+          noItemsText: 'No choices found'
+        }).init([], []);
       });
     </script>
   <script type="text/javascript" src="checkboxselect.js"></script></body>
