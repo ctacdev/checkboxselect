@@ -6,7 +6,7 @@
     <title>Checkbox Select Demo</title>
   </head>
   <body>
-    <div class="checkbox-select-container" style="width: 150px;"></div>
+    <div id="checkbox-select-container" class="checkbox-select-container" style="width: 150px;"></div>
     <script>
 
       document.addEventListener('DOMContentLoaded', () => {
@@ -17,6 +17,8 @@
           fieldName: 'animals[]',
           onItemSelected: (item) => { console.log(item) },
           onItemDeselected: (item) => { console.log(item) },
+          leftArrow: '◀',
+          downArrow: '▼',
         }).init([
           { name: 'ant', value: 1 },
           { name: 'baboon', value: 2 },

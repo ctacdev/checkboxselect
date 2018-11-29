@@ -5,8 +5,9 @@ export class CheckboxSelect {
     if (!options.onItemSelected) options.onItemSelected = () => {};
     if (!options.onItemDeselected) options.onItemDeselected = () => {};
 
-    this.downArrow = '▼';
-    this.leftArrow = '◀';
+    if (!options.downArrow) options.downArrow = '▼';
+    if (!options.leftArrow) options.leftArrow = '◀';
+
     this.fieldsetTemplate = require("../html/fieldset.handlebars");
     this.checkboxTemplate = require("../html/checkbox.handlebars");
 
@@ -71,7 +72,7 @@ export class CheckboxSelect {
     this.selectedItems = selectedItems || [];
     this.targetDiv.innerHTML = this.fieldsetTemplate({
       legend: this.legend,
-      downArrow: this.downArrow,
+      arrow: this.downArrow,
       checkboxes: this.getCheckboxes()
     });
 
