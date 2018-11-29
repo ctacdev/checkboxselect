@@ -6,13 +6,14 @@
     <title>Checkbox Select Demo</title>
   </head>
   <body>
-    <div id="checkbox-select-container" class="checkbox-select-container" style=""></div>
+    <div id="animals-container" class="checkbox-select-container" style="width: 170px;"></div>
+    <div id="foods-container" class="checkbox-select-container" style="width: 170px;"></div>
     <script>
 
       document.addEventListener('DOMContentLoaded', () => {
 
         new CheckboxSelect({
-          targetContainerId: 'checkbox-select-container',
+          targetContainerId: 'animals-container',
           legend: 'ANIMALS',
           fieldName: 'animals[]',
           onItemSelected: (item) => { console.log(item) },
@@ -31,6 +32,27 @@
           { name: 'iguana', value: 9 },
           { name: 'jaguar', value: 10 }
         ], [1,3,9]);
+
+        new CheckboxSelect({
+          targetContainerId: 'foods-container',
+          legend: 'FOODS',
+          fieldName: 'foods[]',
+          onItemSelected: (item) => { console.log(item) },
+          onItemDeselected: (item) => { console.log(item) },
+          leftArrow: '◀', // <i class="fas fa-caret-left"></i>
+          downArrow: '▼', // <i class="fas fa-caret-down"></i>
+        }).init([
+          { name: 'asparagus', value: 1 },
+          { name: 'brocolli', value: 2 },
+          { name: 'cabbage', value: 3 },
+          { name: 'deer meat', value: 4 },
+          { name: 'eggs', value: 5 },
+          { name: 'frijoles', value: 6 },
+          { name: 'gourmet chcocolate', value: 7 },
+          { name: 'hummus', value: 8 },
+          { name: 'ice cream', value: 9 },
+          { name: 'jalapeno', value: 10 }
+        ], [2, 5, 7]);
       });
     </script>
   </body>

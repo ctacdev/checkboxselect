@@ -39,8 +39,8 @@ export class CheckboxSelect {
 
     if (e.type === 'keydown' && e.code !== 'Space') return;
 
-    const legend = document.getElementsByClassName('legend-container')[0];
-    const checkboxes = document.getElementsByClassName('checkboxes-container')[0];
+    const legend = this.targetDiv.getElementsByClassName('legend-container')[0];
+    const checkboxes = this.targetDiv.getElementsByClassName('checkboxes-container')[0];
     let arrow = legend.getElementsByClassName('arrow-down')[0];
 
     if (arrow) {
@@ -76,11 +76,11 @@ export class CheckboxSelect {
       checkboxes: this.getCheckboxes()
     });
 
-    const legendContainer = document.getElementsByClassName('legend-container')[0];
+    const legendContainer = this.targetDiv.getElementsByClassName('legend-container')[0];
     legendContainer.addEventListener('keydown', e => this.toggleMultiselectExpand(e, this));
     legendContainer.addEventListener('click', e => this.toggleMultiselectExpand(e, this));
 
-    Array.from(document.getElementsByClassName('checkbox-container')).forEach(container => {
+    Array.from(this.targetDiv.getElementsByClassName('checkbox-container')).forEach(container => {
 
       const input = container.getElementsByTagName('input')[0];
       input.addEventListener('change', () => this.onCheckboxChanged(input, this));
