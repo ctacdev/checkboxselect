@@ -14,7 +14,7 @@
 
   .legend-container {
     overflow: auto;
-    padding: .5rem .5rem .5rem 1rem;
+    padding: .5rem;
     border: 1px solid #ddd;
     border-top-right-radius: 3px;
     border-top-left-radius: 3px;
@@ -22,7 +22,7 @@
 
     legend {
       float: left;
-      width: 85%;
+      width: 90%;
       padding: 0;
       font-weight: normal;
       color: black;
@@ -43,6 +43,7 @@
     overflow-y: scroll;
     border: 1px solid #ddd;
     border-top: none;
+    padding-left: 0.5rem;
   }
 
   .checkbox-container:hover {
@@ -51,23 +52,15 @@
 
   .checkbox-container {
     padding: 0;
-    line-height: 1.85rem;
-
-    input {
-      margin-right: 0;
-      margin-bottom: 0.3rem;
-    }
-
-    label {
-      margin: 0 0 0 1.5rem;
-    }
+    line-height: 1.5rem;
   }
 
   .empty-filters-text {padding: 1rem;}
 
   .arrow-left, .arrow-down {
     color: #757575;
-    float: right;
+    float: left;
+    width: 10%;
     line-height: 100%;
     outline: none;
 
