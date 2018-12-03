@@ -1,3 +1,6 @@
+const fieldsetTemplate = require("../html/fieldset.handlebars");
+const checkboxTemplate = require("../html/checkbox.handlebars");
+
 export class CheckboxSelect {
 
   constructor(options = {}) {
@@ -10,8 +13,8 @@ export class CheckboxSelect {
 
     if (!options.noItemsText) options.noItemsText = 'No items found';
 
-    this.fieldsetTemplate = require("../html/fieldset.handlebars");
-    this.checkboxTemplate = require("../html/checkbox.handlebars");
+    if (!this.fieldsetTemplate) this.fieldsetTemplate = fieldsetTemplate;
+    if (!this.checkboxTemplate) this.checkboxTemplate = checkboxTemplate;
 
     Object.assign(this, options);
 

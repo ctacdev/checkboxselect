@@ -6,9 +6,9 @@
     <title>Checkbox Select Demo</title>
   </head>
   <body>
-    <div id="animals-container" class="checkbox-select-container" style="width: 170px;"></div>
-    <div id="foods-container" class="checkbox-select-container" style="width: 170px;"></div>
-    <div id="empty-container" class="checkbox-select-container" style="width: 170px;"></div>
+    <div id="animals-container" class="checkbox-select-container" style="width: 160px;"></div>
+    <div id="foods-container" class="checkbox-select-container" style="width: 160px;"></div>
+    <div id="empty-container" class="checkbox-select-container" style="width: 160px;"></div>
     <script>
 
       document.addEventListener('DOMContentLoaded', () => {
@@ -17,8 +17,8 @@
           targetContainerId: 'animals-container',
           legend: 'ANIMALS',
           fieldName: 'animals[]',
-          onItemSelected: (item) => { console.log(item) },
-          onItemDeselected: (item) => { console.log(item) },
+          onItemSelected: item => { console.log(item) },
+          onItemDeselected: item => { console.log(item) },
           leftArrow: '◀', // <i class="fas fa-caret-left"></i>
           downArrow: '▼', // <i class="fas fa-caret-down"></i>
           noItemsText: 'no animals found'
