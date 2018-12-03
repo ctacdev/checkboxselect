@@ -24,15 +24,17 @@ export class CheckboxSelect {
 
   getCheckboxes() {
 
-    if (!this.items || this.items.length == 0) return `<div class="empty-filters-text">${this.noItemsText}</div>`;
+    const itemNames = Object.keys(this.items)
 
-    return this.items.map(item => {
+    if (!this.items || itemNames.length == 0) return `<div class="empty-filters-text">${this.noItemsText}</div>`;
+
+    return itemNames.map(itemName => {
 
       return this.checkboxTemplate({
         fieldName: this.fieldName,
-        value: item.value,
-        name: item.name,
-        checked: this.selectedItems.includes(item.value) ? 'checked' : ''
+        value: this.items[itemName],
+        name: itemName,
+        checked: this.selectedItems.includes(this.items[itemName]) ? 'checked' : ''
       });
     }).join('\n');
   }
@@ -64,11 +66,16 @@ export class CheckboxSelect {
 
   onCheckboxChanged(input, checkboxSelect) {
 
-    if (input.checked) this.onItemSelected(checkboxSelect.items.find(item => item.value == input.value));
-    else this.onItemDeselected(checkboxSelect.items.find(item => item.value == input.value));
+    const itemNames = Object.keys(checkboxSelect.items);
+    const itemName = itemNames.find(itemName => checkboxSelect.items[itemName] == input.value);
+    const item = {};
+    item[itemName] = input.value;
+
+    if (input.checked) this.onItemSelected(item);
+    else this.onItemDeselected(item);
   }
 
-  init(items = [], selectedItems = []) {
+  init(items = {}, selectedItems = []) {
 
     this.items = items;
     this.selectedItems = selectedItems || [];
