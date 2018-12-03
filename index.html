@@ -59,13 +59,6 @@
 
         new CheckboxSelect({
           targetContainerId: 'empty-container',
-          legend: 'EMPTY',
-          fieldName: 'empty[]',
-          onItemSelected: (item) => { console.log(item) },
-          onItemDeselected: (item) => { console.log(item) },
-          collapsedIcon: '◀', // <i class="fas fa-caret-left"></i>
-          expandedIcon: '▼', // <i class="fas fa-caret-down"></i>,
-          noItemsText: 'No choices found'
         }).init({}, []);
       });
     </script>
