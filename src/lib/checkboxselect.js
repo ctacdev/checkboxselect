@@ -16,6 +16,8 @@ export class CheckboxSelect {
     if (!this.fieldsetTemplate) this.fieldsetTemplate = fieldsetTemplate;
     if (!this.checkboxTemplate) this.checkboxTemplate = checkboxTemplate;
 
+    if (!this.legend) this.legend = 'ITEMS';
+
     Object.assign(this, options);
 
     if (this.targetContainerId) {
@@ -27,7 +29,7 @@ export class CheckboxSelect {
 
   getCheckboxes() {
 
-    const itemNames = Object.keys(this.items)
+    const itemNames = Object.keys(this.items);
 
     if (!this.items || itemNames.length == 0) return `<div class="empty-filters-text">${this.noItemsText}</div>`;
 

@@ -43,7 +43,6 @@
     overflow-y: scroll;
     border: 1px solid #ddd;
     border-top: none;
-    padding-left: 0.5rem;
   }
 
   .checkbox-container:hover {
@@ -51,7 +50,7 @@
   }
 
   .checkbox-container {
-    padding: 0;
+    padding-left: 0.5rem;
     line-height: 1.5rem;
   }
 

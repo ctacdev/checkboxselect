@@ -18,7 +18,7 @@
 <!DOCTYPE html>
 <html>
   <body>
-    <div id="animals-container" class="checkbox-select-container" style="width: 150px;"></div>
+    <div id="animals-container" class="checkbox-select-container" style="width: 160px;"></div>
     <script>
       document.addEventListener('DOMContentLoaded', () => {
         new CheckboxSelect({
@@ -57,3 +57,9 @@ The example above would render:
 *when closed:*
 
 ![example when closed](./docs/closed.png)
+
+## Options
+|Name|Type|Default|Description|
+|:--:|:--:|:-----:|:---------:|
+|targetContainerId|{String}|If not provided, the first container element having the CSS class `checkbox-select-container` will be used instead.|The `id` attribute of the target div container.|
+|legend|{String}|ITEMS|   |
