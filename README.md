@@ -14,6 +14,23 @@
 `node_modules/.bin/webpack`
 
 ## Usage
+
+### Basic usage using defaults
+
+##### HTML
+
+```HTML
+<div class="checkbox-select-container"></div>
+```
+
+##### JS
+```JS
+const items = {item1: 1, item2: 2, item3: 3};
+const selectedItemValues = [1,3];
+new CheckboxSelect().init(items, selectedItemValues);
+```
+
+### Full example
 ```HTML
 <!DOCTYPE html>
 <html>
