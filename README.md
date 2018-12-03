@@ -27,8 +27,8 @@
           fieldName: 'animals[]',
           onItemSelected: item => { console.log(item) },
           onItemDeselected: item => { console.log(item) },
-          leftArrow: '◀',
-          downArrow: '▼',
+          collapsedIcon: '◀',
+          expandedIcon: '▼',
           noItemsText: 'no animals found'
         }).init({
           'ant' : 1,
@@ -61,5 +61,11 @@ The example above would render:
 ## Options
 |Name|Type|Default|Description|
 |:--:|:--:|:-----:|:---------:|
-|targetContainerId|{String}|If not provided, the first container element having the CSS class `checkbox-select-container` will be used instead.|The `id` attribute of the target div container.|
-|legend|{String}|ITEMS|   |
+|`targetContainerId`|{String}|If not provided, the first container element having the CSS class `checkbox-select-container` will be used instead.|The `id` attribute of the target container element.|
+|`legend`|{String}|`ITEMS`|The caption that will be used for the `<fieldset>` element|
+|`fieldName`|{String}|`items[]`|The `name` attribute of the `<input type="checkbox">` elements.|
+|`noItemsText`|{String}|`No items found`|The text to display when there are no items.|
+|`expandedIcon`|{String}|`▼`|The icon shown when the fieldset is expanded. This can be an HTML string such as a [Font Awesome](https://fontawesome.com) icon (e.g. `<i class="fas fa-caret-down"></i>`).|
+|`collapsedIcon`|{String}|`◀`|The icon shown when the fieldset is collapsed. This can be an HTML string such as a [Font Awesome](https://fontawesome.com) icon (e.g. `<i class="fas fa-caret-left"></i>`).|
+|`onItemSelected`|{Function}|`(item) => {}`|The function to be called when an item is selected. `item` is a key value pair of the name and value of the selected item (e.g. `{eagle: "5"}`).|
+|`onItemDeselected`|{Function}|`(item) => {}`|The function to be called when an item is deselected. `item` is a key value pair of the name and value of the deselected item (e.g. `{eagle: "5"}`).|

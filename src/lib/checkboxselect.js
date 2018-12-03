@@ -8,8 +8,8 @@ export class CheckboxSelect {
     if (!options.onItemSelected) options.onItemSelected = () => {};
     if (!options.onItemDeselected) options.onItemDeselected = () => {};
 
-    if (!options.downArrow) options.downArrow = '▼';
-    if (!options.leftArrow) options.leftArrow = '◀';
+    if (!options.expandedIcon) options.expandedIcon = '▼';
+    if (!options.collapsedIcon) options.collapsedIcon = '◀';
 
     if (!options.noItemsText) options.noItemsText = 'No items found';
 
@@ -17,6 +17,7 @@ export class CheckboxSelect {
     if (!this.checkboxTemplate) this.checkboxTemplate = checkboxTemplate;
 
     if (!this.legend) this.legend = 'ITEMS';
+    if (!this.fieldName) this.fieldName = 'items[]';
 
     Object.assign(this, options);
 
@@ -56,7 +57,7 @@ export class CheckboxSelect {
 
       arrow.classList.remove('arrow-down');
       arrow.classList.add('arrow-left');
-      arrow.innerHTML = checkboxSelect.leftArrow;
+      arrow.innerHTML = checkboxSelect.collapsedIcon;
       checkboxes.style.display = 'none';
 
     } else {
@@ -64,7 +65,7 @@ export class CheckboxSelect {
       arrow = legend.getElementsByClassName('arrow-left')[0];
       arrow.classList.remove('arrow-left');
       arrow.classList.add('arrow-down');
-      arrow.innerHTML = checkboxSelect.downArrow;
+      arrow.innerHTML = checkboxSelect.expandedIcon;
       checkboxes.style.display = 'block';
     }
   }
@@ -86,7 +87,7 @@ export class CheckboxSelect {
     this.selectedItems = selectedItems || [];
     this.targetDiv.innerHTML = this.fieldsetTemplate({
       legend: this.legend,
-      arrow: this.downArrow,
+      arrow: this.expandedIcon,
       checkboxes: this.getCheckboxes()
     });
 

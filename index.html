@@ -19,8 +19,8 @@
           fieldName: 'animals[]',
           onItemSelected: item => { console.log(item) },
           onItemDeselected: item => { console.log(item) },
-          leftArrow: '◀', // <i class="fas fa-caret-left"></i>
-          downArrow: '▼', // <i class="fas fa-caret-down"></i>
+          collapsedIcon: '◀', // <i class="fas fa-caret-left"></i>
+          expandedIcon: '▼', // <i class="fas fa-caret-down"></i>
           noItemsText: 'no animals found'
         }).init({
           'ant' : 1,
@@ -41,8 +41,8 @@
           fieldName: 'foods[]',
           onItemSelected: (item) => { console.log(item) },
           onItemDeselected: (item) => { console.log(item) },
-          leftArrow: '◀', // <i class="fas fa-caret-left"></i>
-          downArrow: '▼', // <i class="fas fa-caret-down"></i>,
+          collapsedIcon: '◀', // <i class="fas fa-caret-left"></i>
+          expandedIcon: '▼', // <i class="fas fa-caret-down"></i>,
           noItemsText: 'no foods found'
         }).init({
           'asparagus': 1,
@@ -63,8 +63,8 @@
           fieldName: 'empty[]',
           onItemSelected: (item) => { console.log(item) },
           onItemDeselected: (item) => { console.log(item) },
-          leftArrow: '◀', // <i class="fas fa-caret-left"></i>
-          downArrow: '▼', // <i class="fas fa-caret-down"></i>,
+          collapsedIcon: '◀', // <i class="fas fa-caret-left"></i>
+          expandedIcon: '▼', // <i class="fas fa-caret-down"></i>,
           noItemsText: 'No choices found'
         }).init({}, []);
       });
