@@ -60,7 +60,7 @@ The example above would render:
 
 ## Options
 |Name|Type|Default|Description|
-|:--:|:--:|:-----:|:---------:|
+|:--|:--:|:-----:|:---------|
 |`targetContainerId`|{String}|If not provided, the first container element having the CSS class `checkbox-select-container` will be used instead.|The `id` attribute of the target container element.|
 |`legend`|{String}|`ITEMS`|The caption that will be used for the `<fieldset>` element|
 |`fieldName`|{String}|`items[]`|The `name` attribute of the `<input type="checkbox">` elements.|
