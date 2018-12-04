@@ -1,5 +1,5 @@
 ## Install
-`git clone http://repo.com`
+`git clone https://github.com/zdj/checkboxselect`
 
 `npm install`
 

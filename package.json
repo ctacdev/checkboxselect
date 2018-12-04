@@ -1,7 +1,8 @@
 {
-  "name": "checkbox-select",
-  "version": "1.0.0",
-  "description": "",
+  "name": "checkboxselect",
+  "version": "0.0.0",
+  "description": "An implementation of a multiselect control using an HTML fieldset with checkboxes.",
+  "keywords": ["html", "css", "forms", "multiselect", "checkbox", "select", "javascript", "es6", "webpack"],
   "main": "src/index.js",
   "devDependencies": {
     "@babel/core": "^7.1.6",
