@@ -11,11 +11,10 @@ export class CheckboxSelect {
     if (!options.expandedIcon) options.expandedIcon = '▼';
     if (!options.collapsedIcon) options.collapsedIcon = '◀';
 
-    if (!options.noItemsText) options.noItemsText = 'No items found';
-
     if (!this.fieldsetTemplate) this.fieldsetTemplate = fieldsetTemplate;
     if (!this.checkboxTemplate) this.checkboxTemplate = checkboxTemplate;
 
+    if (!options.noItemsText) options.noItemsText = 'No items found';
     if (!this.legend) this.legend = 'ITEMS';
     if (!this.fieldName) this.fieldName = 'items[]';
 
@@ -30,17 +29,17 @@ export class CheckboxSelect {
 
   getCheckboxes() {
 
-    const itemNames = Object.keys(this.items);
+    const items = Object.entries(this.items);
 
-    if (!this.items || itemNames.length == 0) return `<div class="empty-filters-text">${this.noItemsText}</div>`;
+    if (items.length == 0) return `<div class="empty-filters-text">${this.noItemsText}</div>`;
 
-    return itemNames.map(itemName => {
+    return items.map(item => {
 
       return this.checkboxTemplate({
         fieldName: this.fieldName,
-        value: this.items[itemName],
-        name: itemName,
-        checked: this.selectedItems.includes(this.items[itemName]) ? 'checked' : ''
+        value: item[1],
+        name: item[0],
+        checked: this.selectedItems.includes(item[1]) ? 'checked' : ''
       });
     }).join('\n');
   }
@@ -83,13 +82,25 @@ export class CheckboxSelect {
 
   init(items = {}, selectedItems = []) {
 
-    this.items = items;
+    this.items = items || {};
     this.selectedItems = selectedItems || [];
+
+    const itemNames = Object.keys(this.items);
+
     this.targetDiv.innerHTML = this.fieldsetTemplate({
       legend: this.legend,
-      arrow: this.expandedIcon,
+      arrow: itemNames.length == 0 ? this.collapsedIcon : this.expandedIcon,
       checkboxes: this.getCheckboxes()
     });
+
+    if (itemNames.length == 0) {
+
+      this.targetDiv.getElementsByClassName('checkboxes-container')[0].classList.add('collapse');
+
+      const iconContainer = this.targetDiv.getElementsByClassName('arrow-down')[0];
+      iconContainer.classList.remove('arrow-down');
+      iconContainer.classList.add('arrow-left');
+    }
 
     const legendContainer = this.targetDiv.getElementsByClassName('legend-container')[0];
     legendContainer.addEventListener('keydown', e => this.toggleMultiselectExpand(e, this));
@@ -102,7 +113,7 @@ export class CheckboxSelect {
 
       container.addEventListener('click', e => {
 
-        if (e.target.nodeName == 'DIV') {
+        if (e.target.nodeName === 'DIV') {
 
           input.checked = !input.checked;
           this.onCheckboxChanged(input, this);

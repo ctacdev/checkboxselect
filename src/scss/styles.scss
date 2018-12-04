@@ -35,6 +35,10 @@
     display: block;
   }
 
+  fieldset:first-of-type .checkboxes-container.collapse {
+    display: none;
+  }
+
   .checkboxes-container {
     box-sizing: border-box;
     display: none;
