@@ -20,7 +20,7 @@
 ##### HTML
 
 ```HTML
-<div class="checkbox-select-container"></div>
+<div class="js-checkbox-select-container"></div>
 ```
 
 ##### JS
@@ -35,7 +35,7 @@ new CheckboxSelect().init(items, selectedItemValues);
 <!DOCTYPE html>
 <html>
   <body>
-    <div id="animals-container" class="checkbox-select-container" style="width: 160px;"></div>
+    <div id="animals-container" class="js-checkbox-select-container" style="width: 160px;"></div>
     <script>
       document.addEventListener('DOMContentLoaded', () => {
         new CheckboxSelect({
@@ -75,10 +75,14 @@ The example above would render:
 
 ![example when closed](./docs/closed.png)
 
+#### Use with data-* attributes
+
+You can also use `data-*` attributes on the target container
+
 ## Options
 |Name|Type|Default|Description|
 |:--|:--:|:-----:|:---------|
-|`targetContainerId`|{String}|If not provided, the first container element having the CSS class `checkbox-select-container` will be used instead.|The `id` attribute of the target container element.|
+|`targetContainerId`|{String}|If not provided, the first container element having the CSS class `js-checkbox-select-container` will be used instead.|The `id` attribute of the target container element.|
 |`legend`|{String}|`ITEMS`|The caption that will be used for the `<fieldset>` element|
 |`fieldName`|{String}|`items[]`|The `name` attribute of the `<input type="checkbox">` elements.|
 |`noItemsText`|{String}|`No items found`|The text to display when there are no items.|

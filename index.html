@@ -6,9 +6,13 @@
     <title>Checkbox Select Demo</title>
   </head>
   <body>
-    <div id="animals-container" class="checkbox-select-container" style="width: 160px;"></div>
-    <div id="foods-container" class="checkbox-select-container" style="width: 160px;"></div>
-    <div id="empty-container" class="checkbox-select-container" style="width: 160px;"></div>
+    <div id="animals-container" class="js-checkbox-select-container" style="width: 160px;"></div>
+    <div id="empty-container" class="js-checkbox-select-container" style="width: 160px;"></div>
+    <div id="foods-container" class="js-checkbox-select-container" style="width: 160px;"
+      data-legend="FOODS" data-field-name="foods[]" data-collapsed-icon="◀" data-expanded-icon="▼"
+      data-no-items-text="no foods found" data-on-item-selected="item => console.log(item)"
+      data-on-item-deselected="item => console.log(item)">
+    </div>
     <script>
 
       document.addEventListener('DOMContentLoaded', () => {
@@ -35,16 +39,7 @@
           'jaguar': 10
         }, [1,3,9]);
 
-        new CheckboxSelect({
-          targetContainerId: 'foods-container',
-          legend: 'FOODS',
-          fieldName: 'foods[]',
-          onItemSelected: (item) => { console.log(item) },
-          onItemDeselected: (item) => { console.log(item) },
-          collapsedIcon: '◀', // <i class="fas fa-caret-left"></i>
-          expandedIcon: '▼', // <i class="fas fa-caret-down"></i>,
-          noItemsText: 'no foods found'
-        }).init({
+        new CheckboxSelect({targetContainerId: 'foods-container'}).init({
           'asparagus': 1,
           'brocolli': 2,
           'cabbage': 3,
@@ -57,9 +52,7 @@
           'jalapeno': 10
         }, [2, 5, 7]);
 
-        new CheckboxSelect({
-          targetContainerId: 'empty-container',
-        }).init({}, []);
+        new CheckboxSelect({targetContainerId: 'empty-container'}).init({}, []);
       });
     </script>
   </body>

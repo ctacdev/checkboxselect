@@ -5,26 +5,49 @@ export class CheckboxSelect {
 
   constructor(options = {}) {
 
+    if (options.targetContainerId && Object.keys(options).length == 1) {
+
+      const targetContainer = document.getElementById(options.targetContainerId);
+
+      options.legend = targetContainer.getAttribute('data-legend');
+      options.fieldName = targetContainer.getAttribute('data-field-name');
+      options.noItemsText = targetContainer.getAttribute('data-no-items-text');
+      options.expandedIcon = targetContainer.getAttribute('data-expanded-icon');
+      options.collapsedIcon = targetContainer.getAttribute('data-collapsed-icon');
+
+      const onItemSelected = targetContainer.getAttribute('data-on-item-selected');
+      const onItemDeselected = targetContainer.getAttribute('data-on-item-deselected');
+      options.onItemSelected = item => this.toggleItem(item, this, onItemSelected, true);
+      options.onItemDeselected = item => this.toggleItem(item, this, onItemDeselected, true);
+    }
+
     if (!options.onItemSelected) options.onItemSelected = () => {};
     if (!options.onItemDeselected) options.onItemDeselected = () => {};
 
     if (!options.expandedIcon) options.expandedIcon = '▼';
     if (!options.collapsedIcon) options.collapsedIcon = '◀';
 
-    if (!this.fieldsetTemplate) this.fieldsetTemplate = fieldsetTemplate;
-    if (!this.checkboxTemplate) this.checkboxTemplate = checkboxTemplate;
+    if (!options.fieldsetTemplate) options.fieldsetTemplate = fieldsetTemplate;
+    if (!options.checkboxTemplate) options.checkboxTemplate = checkboxTemplate;
 
     if (!options.noItemsText) options.noItemsText = 'No items found';
-    if (!this.legend) this.legend = 'ITEMS';
-    if (!this.fieldName) this.fieldName = 'items[]';
+    if (!options.legend) options.legend = 'ITEMS';
+    if (!options.fieldName) options.fieldName = 'items[]';
 
     Object.assign(this, options);
 
     if (this.targetContainerId) {
       this.targetDiv = document.getElementById(this.targetContainerId);
     } else {
-      this.targetDiv = document.getElementsByClassName('checkbox-select-container')[0];
+      this.targetDiv = document.getElementsByClassName('js-checkbox-select-container')[0];
     }
+  }
+
+  toggleItem(item, checkboxSelect, functionString) {
+
+    const script  =  document.createElement('script');
+    script.innerHTML = `var call = ${functionString}; call(${JSON.stringify(item)});`
+    document.getElementsByTagName('body')[0].append(script);
   }
 
   getCheckboxes() {
