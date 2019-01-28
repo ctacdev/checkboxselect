@@ -24,8 +24,8 @@ export class CheckboxSelect {
     if (!options.onItemSelected) options.onItemSelected = () => {};
     if (!options.onItemDeselected) options.onItemDeselected = () => {};
 
-    if (!options.expandedIcon) options.expandedIcon = '▼';
-    if (!options.collapsedIcon) options.collapsedIcon = '◀';
+    if (options.expandedIcon == null || options.expandedIcon == undefined) options.expandedIcon = '▼';
+    if (options.collapsedIcon == null || options.collapsedIcon == undefined) options.collapsedIcon = '◀';
 
     if (!options.fieldsetTemplate) options.fieldsetTemplate = fieldsetTemplate;
     if (!options.checkboxTemplate) options.checkboxTemplate = checkboxTemplate;
