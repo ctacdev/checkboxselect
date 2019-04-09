@@ -62,7 +62,7 @@ export class CheckboxSelect {
         fieldName: this.fieldName,
         value: item[1],
         name: item[0],
-        checked: this.selectedItems.includes(item[1]) ? 'checked' : ''
+        checked: this.selectedItems.includes(item[1].toString()) ? 'checked' : ''
       });
     }).join('\n');
   }
@@ -103,10 +103,12 @@ export class CheckboxSelect {
     else this.onItemDeselected(item);
   }
 
-  init(items = {}, selectedItems = []) {
+  init(items = {}, selectedItems) {
 
     this.items = items || {};
     this.selectedItems = selectedItems || [];
+
+    if (typeof this.selectedItems === 'string') { this.selectedItems = [selectedItems]; } 
 
     const itemNames = Object.keys(this.items);
 
