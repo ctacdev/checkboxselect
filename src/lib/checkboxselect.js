@@ -62,7 +62,8 @@ export class CheckboxSelect {
         fieldName: this.fieldName,
         value: item[1],
         name: item[0],
-        checked: this.selectedItems.includes(item[1].toString()) ? 'checked' : ''
+        checked: this.selectedItems.includes(item[1].toString()) ? 'checked' : '',
+        id: `${this.fieldName}_${item[1]}`.replace(/ /g, '_')
       });
     }).join('\n');
   }
