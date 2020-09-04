@@ -26,7 +26,7 @@
     "handlebars-form-helpers": "^0.1.4",
     "handlebars-loader": "^1.7.1",
     "html-webpack-plugin": "^3.2.0",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.13.1",
     "postcss-loader": "^3.0.0",
     "sass-loader": "^8.0.0",
     "style-loader": "^1.0.0",
